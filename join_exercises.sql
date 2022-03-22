@@ -27,14 +27,15 @@ FROM employees e
 WHERE dm.to_date = '9999-01-01'
   AND s.to_date = '9999-01-01'
 ORDER BY dept_name;
-SELECT CONCAT(e.first_name, ' ', e.last_name)      Employee,
-       dept_name                                   Department,
+SELECT CONCAT(e1.first_name, ' ', e1.last_name) AS Employee,
+       dept_name                                AS Department,
        CONCAT(e2.first_name, ' ', e2.last_name) AS Manager
-FROM employees e
-         JOIN dept_emp de on e.emp_no = de.emp_no
+FROM employees e1
+         JOIN dept_emp de on e1.emp_no = de.emp_no
          JOIN departments d on de.dept_no = d.dept_no
          JOIN dept_manager dm on d.dept_no = dm.dept_no
          JOIN employees e2 on e2.emp_no = dm.emp_no
 WHERE dm.to_date = '9999-01-01'
   AND de.to_date = '9999-01-01'
-ORDER BY dept_name;
+
+ORDER BY Department, Employee;
