@@ -16,6 +16,7 @@ FROM titles AS t
          JOIN departments AS d ON de.dept_no = d.dept_no
 WHERE t.to_date = '9999-01-01'
   AND d.dept_name = 'Customer Service'
+  AND de.to_date = '9999-01-01'
 GROUP BY title;
 SELECT dept_name                          AS 'Department Name',
        CONCAT(first_name, ' ', last_name) AS 'Department Manager',
@@ -37,5 +38,4 @@ FROM employees e1
          JOIN employees e2 on e2.emp_no = dm.emp_no
 WHERE dm.to_date = '9999-01-01'
   AND de.to_date = '9999-01-01'
-
 ORDER BY Department, Employee;
