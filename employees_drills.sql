@@ -119,3 +119,43 @@ FROM departments
 WHERE s.from_date BETWEEN CAST('1980-01-01' AS DATE) AND CAST('1989-12-31' AS DATE)
   AND s.to_date BETWEEN CAST('1980-01-01' AS DATE) AND CAST('1989-12-31' AS DATE)
 GROUP BY dept_name;
+SELECT AVG(titleCounts)
+FROM (SELECT emp_no, COUNT(title) AS titleCounts
+      FROM titles
+      GROUP BY emp_no) AS test;
+SELECT AVG(raiseCounts)
+FROM (SELECT emp_no, COUNT(salary) AS raiseCounts
+      FROM salaries
+      GROUP BY emp_no) AS test;
+SELECT title, MAX(salary) AS salaryMax
+FROM salaries
+         JOIN titles t on salaries.emp_no = t.emp_no
+GROUP BY title
+ORDER BY salaryMax DESC;
+SELECT gender, title, MAX(salary) AS salaryMax
+FROM salaries
+         JOIN employees e on salaries.emp_no = e.emp_no
+         JOIN titles t on e.emp_no = t.emp_no
+GROUP BY gender, title
+ORDER BY salaryMax DESC;
+SELECT AVG(age) AS ageAvg
+FROM (SELECT t.emp_no, DATEDIFF(NOW(), birth_date) AS age
+      FROM employees
+               JOIN titles t on employees.emp_no = t.emp_no
+      WHERE t.to_date = '9999-01-01') AS test;
+SELECT SUM(salary)
+FROM salaries
+WHERE emp_no IN (SELECT emp_no
+                 FROM employees
+                 WHERE DATEDIFF(NOW(), birth_date) > 23246.4134);
+SELECT SUM(salary)
+FROM salaries
+WHERE emp_no IN (SELECT emp_no
+                 FROM employees
+                 WHERE DATEDIFF(NOW(), birth_date) < 23246.4134);
+SELECT first_name, last_name, salary
+FROM employees e
+         JOIN salaries s on e.emp_no = s.emp_no
+WHERE e.emp_no IN (SELECT emp_no
+                 FROM dept_manager)
+ORDER BY salary ASC;
