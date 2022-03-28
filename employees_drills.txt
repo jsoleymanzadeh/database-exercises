@@ -1,0 +1,59 @@
+### Problem 1
+
+Find the number of Male (M) and Female (F) employees in the database and order the counts in descending order.
+
+### Problem 2
+
+Find the average salary by employee title, round to 2 decimal places and order by descending order. 
+
+### Problem 3
+
+Find all the employees that have worked in at least 2 departments. Show their first name, last_name and the number of departments they work in. Display all results in ascending order.
+
+
+
+### Problem 4
+
+Display the first name, last name, and salary of the highest payed employee.
+
+
+### Problem 5
+
+Display the first name, last name, and salary of the **second** highest payed employee.
+
+### Problem 6
+
+Display the month and total hires for the month with the most hires. 
+
+
+### Problem 7 
+
+Display each department and the age of the youngest employee at hire date.
+
+### Problem 8
+
+Find all the employees that do not contain vowels in their first name and display the department they work in.
+
+## Relationship Drills
+
+- concat the max salaries of the first two employees
+- get current manager name of Sales department (use subqueries)
+- get all senior engineers in customer service department
+- get all first and last names of current Sales department employees
+- get the name of the employee with the highest salary
+
+## Relationship Bonuses
+
+- what is the most common birthday in the company? least common?
+- what is the average salary of managers by department?
+- how many employees currently work in each department?
+- what is the average salary for each department?
+- what was the average salary in the 80s? By department?
+- how many times (on average) do employees switch titles?
+- how many times (on average) do employees get a raise?
+- what is the highest paying job title historically for women and men? For women only? For men only?
+- does the older half of current employees make more or less than the younger half?
+- list the oldest current employees by title in each department
+- list the 5 historically lowest paid managers
+
+

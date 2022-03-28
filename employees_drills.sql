@@ -138,6 +138,13 @@ FROM salaries
          JOIN titles t on e.emp_no = t.emp_no
 GROUP BY gender, title
 ORDER BY salaryMax DESC;
+SELECT DATEDIFF(NOW(), birth_date) AS age
+FROM employees
+JOIN dept_emp de on employees.emp_no = de.emp_no
+WHERE de.to_date = '9999-01-01'
+ORDER BY age ASC
+LIMIT 2
+OFFSET 120061;
 SELECT AVG(age) AS ageAvg
 FROM (SELECT t.emp_no, DATEDIFF(NOW(), birth_date) AS age
       FROM employees
@@ -153,6 +160,12 @@ FROM salaries
 WHERE emp_no IN (SELECT emp_no
                  FROM employees
                  WHERE DATEDIFF(NOW(), birth_date) < 23246.4134);
+SELECT dept_name, MAX(DATEDIFF(NOW(), birth_date))
+FROM departments d
+JOIN dept_emp de on d.dept_no = de.dept_no
+JOIN employees e on de.emp_no = e.emp_no
+WHERE de.to_date = '9999-01-01'
+GROUP BY dept_name;
 SELECT first_name, last_name, salary
 FROM employees e
          JOIN salaries s on e.emp_no = s.emp_no
